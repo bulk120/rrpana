@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRPANA | DLT SMS Template Authorization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #2c8eb8;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --border-color: #dee2e6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--light-color);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-left: 10px;
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(44, 142, 184, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        nav ul li a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            min-height: calc(100vh - 200px);
+            padding: 40px 0;
+        }
+        
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .page-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .content-block {
+            margin-bottom: 25px;
+        }
+        
+        .content-block h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .content-block p {
+            margin-bottom: 10px;
+        }
+        
+        .content-block ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-block li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background-color: rgba(44, 142, 184, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-color);
+                border-bottom: 1px solid var(--border-color);
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .header-container {
+                padding: 10px 0;
+            }
+            
+            .page-content {
+                padding: 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+        
+        /* Compliance Badge */
+        .compliance-badge {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div>
+                    <div class="logo-text">RRPANA</div>
+                    <div class="logo-subtext">Authorized Service Provider</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-page="consent">Consent Policy</a></li>
+                    <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Home Page -->
+            <section id="home" class="page-section active">
+                <h1 class="page-title">DLT SMS Template Authorization</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <div class="compliance-badge">COMPLIANCE-FOCUSED</div>
+                        <h2>Authorized Service Provider for YSP Candidates</h2>
+                        <p>RRPANA/MANOJ VITHHALRAO DHAWALE is an authorized service provider facilitating consent-based, transactional SMS communication for identification and tracking purposes.</p>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-info-circle"></i> Important Notice</h3>
+                            <p>This website serves as a compliance resource for DLT (Distributed Ledger Technology) SMS template approval. All SMS communications are:</p>
+                            <ul>
+                                <li>Transactional and non-promotional in nature</li>
+                                <li>Sent only with explicit consent from recipients</li>
+                                <li>For identification and tracking purposes only</li>
+                                <li>Compliant with TRAI regulations</li>
+                            </ul>
+                        </div>
+                        
+                        <h3>Purpose</h3>
+                        <p>This platform provides transparency regarding our SMS communication practices and serves as a reference for regulatory compliance verification.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- About Us Page -->
+            <section id="about" class="page-section">
+                <h1 class="page-title">About Us</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <h2>RRPANA/MANOJ VITHHALRAO DHAWALE</h2>
+                        <p>We are an authorized service provider specializing in compliant SMS communication solutions for transactional purposes.</p>
+                        
+                        <h3>Our Role</h3>
+                        <p>As a registered entity, we facilitate legitimate, consent-based SMS communications for identification and tracking of YSP (Your Service Provider) candidates. Our operations strictly adhere to telecommunications regulations and data protection guidelines.</p>
+                        
+                        <h3>Compliance Commitment</h3>
+                        <p>We maintain rigorous compliance with all applicable regulations governing electronic communications, including but not limited to TRAI guidelines for SMS communications.</p>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-shield-alt"></i> Authorization Status</h3>
+                            <p>RRPANA/MANOJ VITHHALRAO DHAWALE operates as an authorized service provider with explicit authorization to send transactional SMS for the specific purpose of candidate identification and tracking.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Services Page -->
+            <section id="services" class="page-section">
+                <h1 class="page-title">Services</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <h2>Authorized SMS Communication Services</h2>
+                        <p>Our services are strictly limited to transactional SMS communication as authorized for YSP candidates.</p>
+                        
+                        <h3>Service Scope</h3>
+                        <ul>
+                            <li><strong>Transactional SMS:</strong> Sending consent-based SMS for identification and tracking purposes</li>
+                            <li><strong>DLT Template Management:</strong> Maintaining approved SMS templates compliant with regulatory requirements</li>
+                            <li><strong>Consent Verification:</strong> Ensuring all communications are sent only to recipients who have provided explicit consent</li>
+                            <li><strong>Compliance Reporting:</strong> Maintaining records as required for regulatory compliance</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Service Limitations</h3>
+                            <p>We do NOT engage in:</p>
+                            <ul>
+                                <li>Promotional or marketing SMS</li>
+                                <li>Unsolicited communications</li>
+                                <li>Communication beyond the authorized scope</li>
+                                <li>Sharing of contact data for unrelated purposes</li>
+                            </ul>
+                        </div>
+                        
+                        <h3>Purpose-Specific Communication</h3>
+                        <p>All SMS communications sent through our platform are strictly for the purpose of identification and tracking of YSP candidates, based on explicit consent received from recipients.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Consent & Communication Policy Page -->
+            <section id="consent" class="page-section">
+                <h1 class="page-title">Consent & Communication Policy</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <h2>Consent-Based Communication Framework</h2>
+                        <p>We operate on a strict consent-based communication model in full compliance with regulatory requirements.</p>
+                        
+                        <h3>Consent Acquisition</h3>
+                        <p>Explicit consent is obtained from all recipients prior to any SMS communication. Consent records are maintained as per regulatory requirements.</p>
+                        
+                        <h3>Communication Scope</h3>
+                        <ul>
+                            <li><strong>Transactional Only:</strong> All SMS are transactional, non-promotional communications</li>
+                            <li><strong>Purpose-Limited:</strong> Messages are sent strictly for identification and tracking purposes</li>
+                            <li><strong>Frequency Controlled:</strong> Communications are limited to necessary interactions</li>
+                            <li><strong>Opt-Out Available:</strong> Clear opt-out mechanism in all communications</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-user-check"></i> Recipient Rights</h3>
+                            <p>All recipients have the right to:</p>
+                            <ul>
+                                <li>Withdraw consent at any time</li>
+                                <li>Opt out of future communications</li>
+                                <li>Request details about consent records</li>
+                                <li>Verify the purpose of communication</li>
+                            </ul>
+                        </div>
+                        
+                        <h3>Compliance Assurance</h3>
+                        <p>Our communication practices are regularly reviewed to ensure ongoing compliance with TRAI regulations and other applicable guidelines governing SMS communications.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Privacy Policy Page -->
+            <section id="privacy" class="page-section">
+                <h1 class="page-title">Privacy Policy</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <h2>Data Protection & Privacy Commitment</h2>
+                        <p>We are committed to protecting the privacy of individuals in accordance with applicable data protection regulations.</p>
+                        
+                        <h3>Data Collection & Use</h3>
+                        <p>We collect and process minimal data required for the specific purpose of identification and tracking through SMS communications. All data handling complies with privacy regulations.</p>
+                        
+                        <h3>Data Protection Measures</h3>
+                        <ul>
+                            <li><strong>Purpose Limitation:</strong> Data is used only for the authorized purpose</li>
+                            <li><strong>Data Minimization:</strong> Only necessary data is collected and retained</li>
+                            <li><strong>Security Safeguards:</strong> Appropriate technical measures protect data</li>
+                            <li><strong>Limited Retention:</strong> Data is retained only as long as necessary</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-lock"></i> Data Security</h3>
+                            <p>We implement appropriate security measures to protect personal data against unauthorized access, alteration, disclosure, or destruction.</p>
+                        </div>
+                        
+                        <h3>Third-Party Disclosure</h3>
+                        <p>We do not share personal data with third parties except as required for the authorized service delivery or as mandated by law.</p>
+                        
+                        <h3>Policy Updates</h3>
+                        <p>This privacy policy may be updated periodically to reflect changes in regulations or our practices. The current version is always available on this website.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact Us Page -->
+            <section id="contact" class="page-section">
+                <h1 class="page-title">Contact Us</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <h2>Compliance & Authorization Inquiries</h2>
+                        <p>For questions regarding our DLT SMS template authorization, compliance, or communication practices:</p>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+                            <p><strong>Service Provider:</strong> RRPANA/MANOJ VITHHALRAO DHAWALE</p>
+                            <p><strong>Purpose:</strong> Authorized service provider for transactional SMS communication</p>
+                            <p><strong>Scope:</strong> Consent-based identification and tracking SMS for YSP candidates</p>
+                        </div>
+                        
+                        <h3>Compliance Verification</h3>
+                        <p>For verification of our authorization status or compliance-related inquiries, please use the contact form below.</p>
+                        
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" placeholder="Your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Your email address">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="Subject of your inquiry">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" placeholder="Please include details about your compliance inquiry"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Inquiry</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>RRPANA</h3>
+                <p>Authorized Service Provider</p>
+                <p>Manoj Vithhalrao Dhawale</p>
+                <p>DLT SMS Template Authorization</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Compliance</h3>
+                <p>Transactional SMS Only</p>
+                <p>Consent-Based Communication</p>
+                <p>Identification & Tracking Purpose</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Purpose</h3>
+                <p>YSP Candidate Communication</p>
+                <p>Non-Promotional</p>
+                <p>Regulatory Compliance</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> RRPANA/MANOJ VITHHALRAO DHAWALE - Authorized Service Provider. All rights reserved.</p>
+                <p>This website is for compliance and informational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Page navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageSections = document.querySelectorAll('.page-section');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get target page
+                const targetPage = link.getAttribute('data-page');
+                
+                // Update active nav link
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show target page
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetPage) {
+                        section.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Simple form submission handler
+        const contactForm = document.querySelector('.contact-form');
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields before submitting.');
+                return;
+            }
+            
+            // In a real implementation, this would submit to a server
+            // For this example, we'll just show a confirmation
+            alert('Thank you for your inquiry. This is a demonstration site, so no actual message was sent. In a real implementation, this form would submit to a compliance contact system.');
+            
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+        });
+        
+        // Highlight current page on load
+        window.addEventListener('load', () => {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
