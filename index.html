@@ -12,6 +12,8 @@
             --light-color: #f8f9fa;
             --dark-color: #343a40;
             --border-color: #dee2e6;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
         }
         
         * {
@@ -172,6 +174,80 @@
             border-radius: 0 4px 4px 0;
         }
         
+        .document-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .document-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .document-box h3 i {
+            margin-right: 10px;
+            color: var(--success-color);
+        }
+        
+        .document-header {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .document-content {
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .document-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #dee2e6;
+        }
+        
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .meta-item strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .official-stamp {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px dashed #ccc;
+        }
+        
+        .stamp {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 2px solid var(--success-color);
+            border-radius: 5px;
+            color: var(--success-color);
+            font-weight: bold;
+            transform: rotate(-3deg);
+            background-color: rgba(40, 167, 69, 0.05);
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary-color);
@@ -259,6 +335,60 @@
             background-color: var(--primary-color);
         }
         
+        /* Authorized Contacts */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .contact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-card h4 i {
+            margin-right: 10px;
+        }
+        
+        .contact-info {
+            margin-bottom: 10px;
+        }
+        
+        /* Compliance Badge */
+        .compliance-badge {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .authorization-badge {
+            display: inline-block;
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--warning-color);
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .mobile-menu-btn {
@@ -304,18 +434,10 @@
             .footer-container {
                 flex-direction: column;
             }
-        }
-        
-        /* Compliance Badge */
-        .compliance-badge {
-            display: inline-block;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -326,7 +448,7 @@
             <div class="logo">
                 <div>
                     <div class="logo-text">RRPANA</div>
-                    <div class="logo-subtext">Authorized Service Provider</div>
+                    <div class="logo-subtext">Authorized Service Provider for YSP</div>
                 </div>
             </div>
             
@@ -337,11 +459,11 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="declarations">Official Declarations</a></li>
                     <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
                     <li><a href="#" class="nav-link" data-page="services">Services</a></li>
                     <li><a href="#" class="nav-link" data-page="consent">Consent Policy</a></li>
-                    <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
-                    <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -355,23 +477,155 @@
                 <h1 class="page-title">DLT SMS Template Authorization</h1>
                 <div class="page-content">
                     <div class="content-block">
-                        <div class="compliance-badge">COMPLIANCE-FOCUSED</div>
+                        <div class="compliance-badge">OFFICIALLY AUTHORIZED</div>
+                        <div class="authorization-badge">
+                            <i class="fas fa-file-contract"></i> Relationship Declaration Filed with DLT Scrutiny Team
+                        </div>
+                        
                         <h2>Authorized Service Provider for YSP Candidates</h2>
-                        <p>RRPANA/MANOJ VITHHALRAO DHAWALE is an authorized service provider facilitating consent-based, transactional SMS communication for identification and tracking purposes.</p>
+                        <p>RRPANA/MANOJ VITHHALRAO DHAWALE is an officially authorized service provider facilitating consent-based, transactional SMS communication for identification and tracking purposes of YSP applicants/candidates.</p>
                         
                         <div class="highlight-box">
-                            <h3><i class="fas fa-info-circle"></i> Important Notice</h3>
-                            <p>This website serves as a compliance resource for DLT (Distributed Ledger Technology) SMS template approval. All SMS communications are:</p>
+                            <h3><i class="fas fa-info-circle"></i> Official Authorization</h3>
+                            <p>This entity operates under formal authorization with documented relationship declarations submitted to the DLT Scrutiny Team. All SMS communications are:</p>
                             <ul>
-                                <li>Transactional and non-promotional in nature</li>
-                                <li>Sent only with explicit consent from recipients</li>
-                                <li>For identification and tracking purposes only</li>
-                                <li>Compliant with TRAI regulations</li>
+                                <li><strong>Officially Authorized:</strong> Formal declarations filed with DLT Scrutiny Team</li>
+                                <li><strong>Transactional Only:</strong> Non-promotional identification and tracking communication</li>
+                                <li><strong>Consent-Based:</strong> Sent only to recipients who provided explicit consent</li>
+                                <li><strong>Fully Compliant:</strong> Adhering to TRAI regulations and DLT requirements</li>
                             </ul>
                         </div>
                         
-                        <h3>Purpose</h3>
-                        <p>This platform provides transparency regarding our SMS communication practices and serves as a reference for regulatory compliance verification.</p>
+                        <h3>Authorization Documentation</h3>
+                        <p>Official relationship declaration letters have been submitted to the DLT Scrutiny Team establishing RRPANA as an authorized entity for YSP candidate communication. These documents verify our legitimate relationship with message content and recipients.</p>
+                        
+                        <a href="#" class="nav-link submit-btn" data-page="declarations" style="display: inline-block; text-decoration: none;">
+                            <i class="fas fa-file-alt"></i> View Official Declarations
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Official Declarations Page -->
+            <section id="declarations" class="page-section">
+                <h1 class="page-title">Official Relationship Declarations</h1>
+                <div class="page-content">
+                    <div class="content-block">
+                        <h2>DLT Compliance Documentation</h2>
+                        <p>Official relationship declaration letters submitted to the DLT Scrutiny Team establishing authorization for SMS template approval.</p>
+                        
+                        <!-- Declaration 1 -->
+                        <div class="document-box">
+                            <h3><i class="fas fa-file-signature"></i> Relationship Declaration Letter (Page 1)</h3>
+                            
+                            <div class="document-header">
+                                <strong>To:</strong> DLT Scrutiny Team<br>
+                                <strong>Subject:</strong> Relationship declaration between Entity (Header: RRPANA) and Message Content
+                            </div>
+                            
+                            <div class="document-content">
+                                <p>This is to declare that RRPANA is an authorized entity responsible for official communication related to YSP applicants / candidates.</p>
+                                
+                                <p>The SMS content submitted under header RRPANA is sent for the purpose of identification / tracking / verification of YSP candidates, as per official process.</p>
+                                
+                                <p>The recipients of this message are users/applicants who have voluntarily shared their mobile numbers during registration or are part of the official YSP database.</p>
+                                
+                                <p>Hence, RRPANA has a direct and legitimate relationship with the message content and is fully authorized to send the above communication.</p>
+                                
+                                <p>We request you to kindly approve the submitted SMS template.</p>
+                            </div>
+                            
+                            <div class="document-meta">
+                                <div class="meta-item">
+                                    <strong>Entity Name:</strong> RRPANA
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Purpose:</strong> Official communication for YSP candidate identification
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Contact Details:</strong> 9969011111
+                                </div>
+                            </div>
+                            
+                            <div class="official-stamp">
+                                <div class="stamp">Authorized Signatory</div>
+                                <div style="margin-top: 15px;">
+                                    <strong>Ravi Rana</strong><br>
+                                    MLA & President YSP
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Declaration 2 -->
+                        <div class="document-box">
+                            <h3><i class="fas fa-file-contract"></i> Relationship Declaration Letter (Page 2)</h3>
+                            
+                            <div class="document-header">
+                                <strong>To:</strong> DLT Scrutiny Team<br>
+                                <strong>Date:</strong> 07/01/2026<br>
+                                <strong>Subject:</strong> Relationship declaration between Entity (Header: RRPANA) and SMS Content
+                            </div>
+                            
+                            <div class="document-content">
+                                <p>This is to formally declare that RRPANA, represented by Mr. MANOJ VITHHALRAO DHAWALE, is an authorized service provider engaged in providing communication and support services to YSP candidates/applicants.</p>
+                                
+                                <p>The SMS content submitted under the header RRPANA is sent solely for official communication purposes, including identification, tracking, and information sharing related to YSP candidates.</p>
+                                
+                                <p>The recipients of these messages are YSP candidates who have voluntarily shared their mobile numbers during registration or have provided explicit consent for receiving service-related communication.</p>
+                                
+                                <p>As a service provider, RRPANA has a direct and legitimate relationship with both the recipients and the message content, and is authorized to send such communications on behalf of the YSP process.</p>
+                                
+                                <p>We kindly request approval of the submitted SMS template.</p>
+                            </div>
+                            
+                            <div class="document-meta">
+                                <div class="meta-item">
+                                    <strong>Entity Name:</strong> RRPANA / MANOJ VITHHALRAO DHAWALE
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Service Role:</strong> Authorized Service Provider for YSP Candidates
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Purpose of SMS:</strong> Official candidate identification / tracking communication
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Contact Number:</strong> 7756872239
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Email ID:</strong> manojdhawale563@gmail.com
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Address:</strong> Marvadipura, Navi Vasti, Badnera
+                                </div>
+                            </div>
+                            
+                            <div class="official-stamp">
+                                <div class="stamp">Authorized Signatories</div>
+                                <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 30px;">
+                                    <div>
+                                        <strong>Manoj Dhawale</strong><br>
+                                        Service Provider / Authorized Representative
+                                    </div>
+                                    <div>
+                                        <strong>Ravi Rana</strong><br>
+                                        MLA & President YSP
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.9rem;">
+                                    <strong>Yuva Swabhiman Office:</strong><br>
+                                    Rajkamal to Rajapeth, Amravati - 444605, Maharashtra<br>
+                                    Tel: 0721-2579671, 2679398 | Mobile: 09969011111, 09594504504<br>
+                                    Email: yuvaswabhiman@yahoo.in / rr_group@rediffmail.com / rr.ravirana@gmail.com<br>
+                                    Web: www.yuvaswabhiman.org.in
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <h3><i class="fas fa-shield-alt"></i> Declaration Verification</h3>
+                            <p>These official documents establish the legitimate relationship between RRPANA/MANOJ VITHHALRAO DHAWALE and the SMS content submitted for DLT template approval. They confirm authorization to send transactional SMS for YSP candidate identification and tracking purposes.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -382,17 +636,17 @@
                 <div class="page-content">
                     <div class="content-block">
                         <h2>RRPANA/MANOJ VITHHALRAO DHAWALE</h2>
-                        <p>We are an authorized service provider specializing in compliant SMS communication solutions for transactional purposes.</p>
+                        <p>We are an officially authorized service provider specializing in compliant SMS communication solutions for transactional purposes related to YSP (Yuva Swabhiman) candidates.</p>
                         
-                        <h3>Our Role</h3>
-                        <p>As a registered entity, we facilitate legitimate, consent-based SMS communications for identification and tracking of YSP (Your Service Provider) candidates. Our operations strictly adhere to telecommunications regulations and data protection guidelines.</p>
+                        <h3>Official Authorization</h3>
+                        <p>As documented in our relationship declaration letters to the DLT Scrutiny Team, RRPANA is formally authorized to send transactional SMS communications for identification, tracking, and verification of YSP candidates/applicants.</p>
                         
-                        <h3>Compliance Commitment</h3>
-                        <p>We maintain rigorous compliance with all applicable regulations governing electronic communications, including but not limited to TRAI guidelines for SMS communications.</p>
+                        <h3>Service Provider Role</h3>
+                        <p>Mr. MANOJ VITHHALRAO DHAWALE serves as the authorized representative and service provider, operating under the authorization of RRPANA to facilitate legitimate, consent-based SMS communications for YSP processes.</p>
                         
                         <div class="highlight-box">
-                            <h3><i class="fas fa-shield-alt"></i> Authorization Status</h3>
-                            <p>RRPANA/MANOJ VITHHALRAO DHAWALE operates as an authorized service provider with explicit authorization to send transactional SMS for the specific purpose of candidate identification and tracking.</p>
+                            <h3><i class="fas fa-certificate"></i> Authorization Confirmation</h3>
+                            <p>Our relationship declaration letters confirm that RRPANA has a direct and legitimate relationship with both the message content and recipients, with full authorization to send transactional SMS for official YSP candidate communication purposes.</p>
                         </div>
                     </div>
                 </div>
@@ -404,29 +658,26 @@
                 <div class="page-content">
                     <div class="content-block">
                         <h2>Authorized SMS Communication Services</h2>
-                        <p>Our services are strictly limited to transactional SMS communication as authorized for YSP candidates.</p>
+                        <p>Our services are strictly limited to transactional SMS communication as officially authorized for YSP candidates, as documented in our DLT relationship declarations.</p>
                         
-                        <h3>Service Scope</h3>
+                        <h3>Officially Authorized Service Scope</h3>
                         <ul>
-                            <li><strong>Transactional SMS:</strong> Sending consent-based SMS for identification and tracking purposes</li>
+                            <li><strong>Transactional SMS:</strong> Sending consent-based SMS for identification, tracking, and verification of YSP candidates</li>
                             <li><strong>DLT Template Management:</strong> Maintaining approved SMS templates compliant with regulatory requirements</li>
-                            <li><strong>Consent Verification:</strong> Ensuring all communications are sent only to recipients who have provided explicit consent</li>
-                            <li><strong>Compliance Reporting:</strong> Maintaining records as required for regulatory compliance</li>
+                            <li><strong>Consent Verification:</strong> Ensuring all communications are sent only to recipients who have provided explicit consent during YSP registration</li>
+                            <li><strong>Official Communication:</strong> Facilitating information sharing related to YSP candidate processes</li>
                         </ul>
                         
                         <div class="highlight-box">
-                            <h3><i class="fas fa-exclamation-triangle"></i> Service Limitations</h3>
-                            <p>We do NOT engage in:</p>
+                            <h3><i class="fas fa-file-contract"></i> Service Authorization Basis</h3>
+                            <p>Our service authorization is documented in official relationship declarations submitted to the DLT Scrutiny Team, confirming that:</p>
                             <ul>
-                                <li>Promotional or marketing SMS</li>
-                                <li>Unsolicited communications</li>
-                                <li>Communication beyond the authorized scope</li>
-                                <li>Sharing of contact data for unrelated purposes</li>
+                                <li>RRPANA is an authorized entity responsible for official YSP communication</li>
+                                <li>Mr. MANOJ VITHHALRAO DHAWALE is the authorized service provider</li>
+                                <li>SMS content is for official identification/tracking purposes only</li>
+                                <li>Recipients have voluntarily shared contact details during YSP registration</li>
                             </ul>
                         </div>
-                        
-                        <h3>Purpose-Specific Communication</h3>
-                        <p>All SMS communications sent through our platform are strictly for the purpose of identification and tracking of YSP candidates, based on explicit consent received from recipients.</p>
                     </div>
                 </div>
             </section>
@@ -437,65 +688,29 @@
                 <div class="page-content">
                     <div class="content-block">
                         <h2>Consent-Based Communication Framework</h2>
-                        <p>We operate on a strict consent-based communication model in full compliance with regulatory requirements.</p>
+                        <p>As documented in our official declarations, we operate on a strict consent-based communication model in full compliance with regulatory requirements.</p>
                         
-                        <h3>Consent Acquisition</h3>
-                        <p>Explicit consent is obtained from all recipients prior to any SMS communication. Consent records are maintained as per regulatory requirements.</p>
+                        <h3>Consent Acquisition Process</h3>
+                        <p>Explicit consent is obtained from all recipients during YSP registration or through official YSP processes. As stated in our declarations, recipients are "users/applicants who have voluntarily shared their mobile numbers during registration or are part of the official YSP database."</p>
                         
-                        <h3>Communication Scope</h3>
+                        <h3>Authorized Communication Scope</h3>
                         <ul>
-                            <li><strong>Transactional Only:</strong> All SMS are transactional, non-promotional communications</li>
-                            <li><strong>Purpose-Limited:</strong> Messages are sent strictly for identification and tracking purposes</li>
-                            <li><strong>Frequency Controlled:</strong> Communications are limited to necessary interactions</li>
+                            <li><strong>Transactional Only:</strong> All SMS are transactional, non-promotional communications for identification and tracking</li>
+                            <li><strong>Purpose-Limited:</strong> Messages are sent strictly for official YSP candidate communication purposes</li>
+                            <li><strong>Database-Based:</strong> Communications are directed to official YSP candidate databases</li>
                             <li><strong>Opt-Out Available:</strong> Clear opt-out mechanism in all communications</li>
                         </ul>
                         
                         <div class="highlight-box">
-                            <h3><i class="fas fa-user-check"></i> Recipient Rights</h3>
-                            <p>All recipients have the right to:</p>
+                            <h3><i class="fas fa-user-check"></i> Recipient Rights & Consent Verification</h3>
+                            <p>As confirmed in our official declarations, all recipients have:</p>
                             <ul>
-                                <li>Withdraw consent at any time</li>
-                                <li>Opt out of future communications</li>
-                                <li>Request details about consent records</li>
-                                <li>Verify the purpose of communication</li>
+                                <li>Voluntarily shared mobile numbers during YSP registration</li>
+                                <li>Provided explicit consent for service-related communication</li>
+                                <li>The right to withdraw consent at any time</li>
+                                <li>Access to verification of their consent status</li>
                             </ul>
                         </div>
-                        
-                        <h3>Compliance Assurance</h3>
-                        <p>Our communication practices are regularly reviewed to ensure ongoing compliance with TRAI regulations and other applicable guidelines governing SMS communications.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Privacy Policy Page -->
-            <section id="privacy" class="page-section">
-                <h1 class="page-title">Privacy Policy</h1>
-                <div class="page-content">
-                    <div class="content-block">
-                        <h2>Data Protection & Privacy Commitment</h2>
-                        <p>We are committed to protecting the privacy of individuals in accordance with applicable data protection regulations.</p>
-                        
-                        <h3>Data Collection & Use</h3>
-                        <p>We collect and process minimal data required for the specific purpose of identification and tracking through SMS communications. All data handling complies with privacy regulations.</p>
-                        
-                        <h3>Data Protection Measures</h3>
-                        <ul>
-                            <li><strong>Purpose Limitation:</strong> Data is used only for the authorized purpose</li>
-                            <li><strong>Data Minimization:</strong> Only necessary data is collected and retained</li>
-                            <li><strong>Security Safeguards:</strong> Appropriate technical measures protect data</li>
-                            <li><strong>Limited Retention:</strong> Data is retained only as long as necessary</li>
-                        </ul>
-                        
-                        <div class="highlight-box">
-                            <h3><i class="fas fa-lock"></i> Data Security</h3>
-                            <p>We implement appropriate security measures to protect personal data against unauthorized access, alteration, disclosure, or destruction.</p>
-                        </div>
-                        
-                        <h3>Third-Party Disclosure</h3>
-                        <p>We do not share personal data with third parties except as required for the authorized service delivery or as mandated by law.</p>
-                        
-                        <h3>Policy Updates</h3>
-                        <p>This privacy policy may be updated periodically to reflect changes in regulations or our practices. The current version is always available on this website.</p>
                     </div>
                 </div>
             </section>
@@ -505,18 +720,40 @@
                 <h1 class="page-title">Contact Us</h1>
                 <div class="page-content">
                     <div class="content-block">
-                        <h2>Compliance & Authorization Inquiries</h2>
-                        <p>For questions regarding our DLT SMS template authorization, compliance, or communication practices:</p>
+                        <h2>Official Authorization Contacts</h2>
+                        <p>For verification of our DLT authorization, SMS template approval status, or compliance-related inquiries:</p>
                         
-                        <div class="highlight-box">
-                            <h3><i class="fas fa-envelope"></i> Contact Information</h3>
-                            <p><strong>Service Provider:</strong> RRPANA/MANOJ VITHHALRAO DHAWALE</p>
-                            <p><strong>Purpose:</strong> Authorized service provider for transactional SMS communication</p>
-                            <p><strong>Scope:</strong> Consent-based identification and tracking SMS for YSP candidates</p>
+                        <div class="contact-grid">
+                            <div class="contact-card">
+                                <h4><i class="fas fa-user-tie"></i> Authorized Service Provider</h4>
+                                <div class="contact-info"><strong>Name:</strong> Mr. MANOJ VITHHALRAO DHAWALE</div>
+                                <div class="contact-info"><strong>Role:</strong> Service Provider / Authorized Representative</div>
+                                <div class="contact-info"><strong>Contact:</strong> 7756872239</div>
+                                <div class="contact-info"><strong>Email:</strong> manojdhawale563@gmail.com</div>
+                                <div class="contact-info"><strong>Address:</strong> Marvadipura, Navi Vasti, Badnera</div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <h4><i class="fas fa-building"></i> Entity Authorization</h4>
+                                <div class="contact-info"><strong>Entity Name:</strong> RRPANA</div>
+                                <div class="contact-info"><strong>Authorized Signatory:</strong> Ravi Rana</div>
+                                <div class="contact-info"><strong>Designation:</strong> MLA & President YSP</div>
+                                <div class="contact-info"><strong>Contact:</strong> 9969011111</div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <h4><i class="fas fa-map-marker-alt"></i> YSP Office</h4>
+                                <div class="contact-info"><strong>Organization:</strong> Yuva Swabhiman</div>
+                                <div class="contact-info"><strong>Address:</strong> Rajkamal to Rajapeth, Amravati - 444605, Maharashtra</div>
+                                <div class="contact-info"><strong>Telephone:</strong> 0721-2579671, 2679398</div>
+                                <div class="contact-info"><strong>Mobile:</strong> 09969011111, 09594504504</div>
+                                <div class="contact-info"><strong>Email:</strong> yuvaswabhiman@yahoo.in / rr_group@rediffmail.com</div>
+                                <div class="contact-info"><strong>Website:</strong> www.yuvaswabhiman.org.in</div>
+                            </div>
                         </div>
                         
-                        <h3>Compliance Verification</h3>
-                        <p>For verification of our authorization status or compliance-related inquiries, please use the contact form below.</p>
+                        <h3>Compliance Verification Form</h3>
+                        <p>For official verification of our DLT authorization or template approval status, please submit your inquiry below:</p>
                         
                         <div class="contact-form">
                             <div class="form-group">
@@ -536,7 +773,7 @@
                             
                             <div class="form-group">
                                 <label for="message">Message</label>
-                                <textarea id="message" placeholder="Please include details about your compliance inquiry"></textarea>
+                                <textarea id="message" placeholder="Please include details about your authorization or compliance inquiry"></textarea>
                             </div>
                             
                             <button type="submit" class="submit-btn">Send Inquiry</button>
@@ -552,30 +789,30 @@
         <div class="container footer-container">
             <div class="footer-section">
                 <h3>RRPANA</h3>
-                <p>Authorized Service Provider</p>
+                <p>Officially Authorized Service Provider</p>
                 <p>Manoj Vithhalrao Dhawale</p>
-                <p>DLT SMS Template Authorization</p>
+                <p>DLT Relationship Declarations Filed</p>
             </div>
             
             <div class="footer-section">
-                <h3>Compliance</h3>
+                <h3>Official Authorization</h3>
                 <p>Transactional SMS Only</p>
-                <p>Consent-Based Communication</p>
-                <p>Identification & Tracking Purpose</p>
+                <p>YSP Candidate Communication</p>
+                <p>DLT Template Approval</p>
             </div>
             
             <div class="footer-section">
-                <h3>Purpose</h3>
-                <p>YSP Candidate Communication</p>
-                <p>Non-Promotional</p>
+                <h3>Documentation</h3>
+                <p>Relationship Declarations Filed</p>
+                <p>Consent-Based Communication</p>
                 <p>Regulatory Compliance</p>
             </div>
         </div>
         
         <div class="container">
             <div class="copyright">
-                <p>&copy; <span id="currentYear"></span> RRPANA/MANOJ VITHHALRAO DHAWALE - Authorized Service Provider. All rights reserved.</p>
-                <p>This website is for compliance and informational purposes only.</p>
+                <p>&copy; <span id="currentYear"></span> RRPANA/MANOJ VITHHALRAO DHAWALE - Officially Authorized Service Provider for YSP. All rights reserved.</p>
+                <p>This website displays official relationship declarations submitted to DLT Scrutiny Team for SMS template approval.</p>
             </div>
         </div>
     </footer>
@@ -616,6 +853,9 @@
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
                 }
+                
+                // Scroll to top when navigating
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
         
@@ -643,7 +883,7 @@
             
             // In a real implementation, this would submit to a server
             // For this example, we'll just show a confirmation
-            alert('Thank you for your inquiry. This is a demonstration site, so no actual message was sent. In a real implementation, this form would submit to a compliance contact system.');
+            alert('Thank you for your inquiry regarding our DLT authorization. This is a demonstration site, so no actual message was sent. In a real implementation, this would be submitted to our compliance team.');
             
             // Reset form
             document.getElementById('name').value = '';
@@ -656,6 +896,16 @@
         window.addEventListener('load', () => {
             // Set current year
             document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Add document verification note
+            const declarationPage = document.getElementById('declarations');
+            const note = document.createElement('div');
+            note.className = 'highlight-box';
+            note.innerHTML = `
+                <h3><i class="fas fa-info-circle"></i> Document Verification Note</h3>
+                <p>These relationship declaration letters are presented exactly as submitted to the DLT Scrutiny Team for SMS template approval. They establish the official authorization of RRPANA/MANOJ VITHHALRAO DHAWALE as a service provider for YSP candidate communication.</p>
+            `;
+            declarationPage.querySelector('.content-block').appendChild(note);
         });
     </script>
 </body>
